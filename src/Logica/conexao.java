@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class conexao {
     public String db="bancoreserva";

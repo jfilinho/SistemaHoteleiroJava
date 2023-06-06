@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class fprodutos {
         private conexao mysql=new conexao();

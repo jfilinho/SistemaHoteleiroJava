@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_quartos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="845740d7-5bdc-4783-a2cc-64079dc62fc9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     tb_quartos.`id_quartos` AS tb_quartos_id_quartos,
+     tb_quartos.`numero` AS tb_quartos_numero,
+     tb_quartos.`andar` AS tb_quartos_andar,
+     tb_quartos.`descricao` AS tb_quartos_descricao,
+     tb_quartos.`caracteristicas` AS tb_quartos_caracteristicas,
+     tb_quartos.`preco_diaria` AS tb_quartos_preco_diaria,
+     tb_quartos.`estado` AS tb_quartos_estado,
+     tb_quartos.`tipo_quarto` AS tb_quartos_tipo_quarto
+FROM
+     `tb_quartos` tb_quartos]]>
+	</queryString>
+	<field name="tb_quartos_id_quartos" class="java.lang.Integer"/>
+	<field name="tb_quartos_numero" class="java.lang.String"/>
+	<field name="tb_quartos_andar" class="java.lang.String"/>
+	<field name="tb_quartos_descricao" class="java.lang.String"/>
+	<field name="tb_quartos_caracteristicas" class="java.lang.String"/>
+	<field name="tb_quartos_preco_diaria" class="java.math.BigDecimal"/>
+	<field name="tb_quartos_estado" class="java.lang.String"/>
+	<field name="tb_quartos_tipo_quarto" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-22" y="-30" width="595" height="92" backcolor="#FF6633" uuid="3c45f6d3-f8b6-4839-a125-b6943879d3ae"/>
+				<staticText>
+					<reportElement x="20" y="20" width="319" height="43" forecolor="#FFFFFF" uuid="e9baa8ff-ff19-43e2-9afc-1bdc325815cc"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Hotel Parma Tulipa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="63" width="180" height="20" forecolor="#FFFFFF" uuid="fcfd07ee-0caf-4d50-b400-41aa7ffc8831"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[CNPJ: 00.014.607/0001-20]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="372" y="32" width="212" height="31" forecolor="#FFFFFF" uuid="bbccedf7-fbf3-47d1-8d81-f1681cd17f02"/>
+					<textElement textAlignment="Right">
+						<font size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Lista de Quartos]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="15"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="20" backcolor="#66CC00" uuid="3abbad6b-d8e9-4017-a87b-cf12ebea7daa"/>
+			</rectangle>
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="914da9c7-19e3-4136-94f6-bb18d020f232"/>
+			</line>
+			<staticText>
+				<reportElement x="27" y="1" width="100" height="20" uuid="b7a580f5-4454-4ce9-8193-883358afe81d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="177" y="1" width="77" height="20" uuid="360979bc-4116-45da-bc12-c1eda3101d3b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Andar]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="275" y="0" width="100" height="20" uuid="ead9f087-231e-4fe6-8f5a-5cb18ad15589"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="1" width="100" height="20" uuid="9f3c3f21-a8b3-4c66-86fb-c0fb9c41a604"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Preço Diária]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="43">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="dd31c476-50a7-4a12-b541-198de5055772"/>
+			</line>
+			<textField>
+				<reportElement x="27" y="19" width="100" height="23" uuid="c166ec21-26a3-4e5b-9b20-1914522204ab"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_quartos_numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="177" y="19" width="77" height="20" uuid="1ef468bf-ea7a-4334-b03c-0064b7c67cd2"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_quartos_andar}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="405" y="20" width="100" height="20" uuid="dc71e14b-6577-4ad6-9421-968e730d65f9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_quartos_preco_diaria}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="275" y="20" width="100" height="20" uuid="bb9b32f4-359c-4863-8b2b-40e52a9ea1c9"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{tb_quartos_tipo_quarto}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21">
+			<textField>
+				<reportElement mode="Opaque" x="83" y="0" width="395" height="13" backcolor="#E6E6E6" uuid="8969c18e-1e32-4801-9a7a-354aa5664d01"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="2" width="100" height="13" uuid="bc4b9a29-c9b0-45ef-b0e3-eabe13fc971e"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="478" y="0" width="40" height="13" backcolor="#E6E6E6" uuid="8190bb0f-a7cf-4a09-aefb-3211c3d62f1b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

@@ -7,7 +7,7 @@ package Dados;
 
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class vprodutos {
     private int idproduto;

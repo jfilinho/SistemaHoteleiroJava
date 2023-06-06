@@ -17,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class ffuncionarios {
     private conexao mysql=new conexao();
@@ -121,7 +121,7 @@ public class ffuncionarios {
     
     public boolean editar (vfuncionarios dts){
         
-        sSQL="update tb_produtos set nome_pessoa=?, nome_pai=?, nome_mae=?, tipo_documento=?, num_documento=?, endereco=?, telefone=?, email=?" +
+        sSQL="update tb_pessoas set nome_pessoa=?, nome_pai=?, nome_mae=?, tipo_documento=?, num_documento=?, endereco=?, telefone=?, email=?" +
                 "where id_pessoa=?";
         sSQL2="update tb_funcionarios set salario=?, acesso=?, login=?, password=?, estado=?" +
                 "where id_pessoa=?";

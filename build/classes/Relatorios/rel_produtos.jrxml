@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rel_produtos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="16e99dc3-cd71-4aa7-a2c2-6388313157c0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     tb_produtos.`nome` AS tb_produtos_nome,
+     tb_produtos.`descricao` AS tb_produtos_descricao,
+     tb_produtos.`unidade_medida` AS tb_produtos_unidade_medida,
+     tb_produtos.`preco_venda` AS tb_produtos_preco_venda
+FROM
+     `tb_produtos` tb_produtos]]>
+	</queryString>
+	<field name="tb_produtos_nome" class="java.lang.String"/>
+	<field name="tb_produtos_descricao" class="java.lang.String"/>
+	<field name="tb_produtos_unidade_medida" class="java.lang.String"/>
+	<field name="tb_produtos_preco_venda" class="java.math.BigDecimal"/>
+	<group name="Group1">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupHeader>
+			<band height="9"/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupHeader>
+			<band/>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupHeader>
+			<band height="33">
+				<rectangle radius="10">
+					<reportElement x="1" y="13" width="554" height="20" backcolor="#66CC00" uuid="018def51-0eb6-48af-b545-27165a527bcd"/>
+				</rectangle>
+				<staticText>
+					<reportElement x="455" y="13" width="100" height="20" uuid="86ee9138-8e8a-4340-873a-303e6a3f1ce7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Preço Venda]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="312" y="13" width="100" height="20" uuid="bcd06ecb-a193-49c8-b485-88aa5a4f8e5a"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Descrição]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="13" width="100" height="20" uuid="18619777-9d84-47da-9ead-95ef17d03d01"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Nome]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="139" y="13" width="140" height="20" uuid="f990de2b-afc0-4cb1-8143-1b3dd39ac4d7"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Unidade de Medida]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-19" y="-21" width="595" height="92" backcolor="#FF6633" uuid="fb0b6625-cbe1-4fb4-ad9d-18612cc72e87"/>
+				<staticText>
+					<reportElement x="20" y="20" width="312" height="43" forecolor="#FFFFFF" uuid="08280a03-b289-4474-ae4b-5c9ae456c7df"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Hotel Parma Tulipa]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="362" y="32" width="212" height="31" forecolor="#FFFFFF" uuid="dacdfd37-ee45-48b9-a634-d56814feae81"/>
+					<textElement textAlignment="Right">
+						<font size="18" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Lista de Produtos]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="63" width="180" height="20" forecolor="#FFFFFF" uuid="9f3ecfb2-39ea-405f-98a5-1842137a81c0"/>
+					<textElement textAlignment="Right">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[CNPJ: 00.014.607/0001-20]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="1"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="11"/>
+	</columnHeader>
+	<detail>
+		<band height="42">
+			<textField>
+				<reportElement x="0" y="4" width="100" height="20" uuid="6f93ac52-6c7b-4372-b7b8-8931111a6b99"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tb_produtos_nome}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="139" y="4" width="100" height="20" uuid="0834efab-348d-461a-9141-5163c6f6638e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tb_produtos_unidade_medida}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="4" width="100" height="20" uuid="2ce8e738-13df-4717-b07a-a6065816732e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tb_produtos_descricao}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="455" y="0" width="100" height="20" uuid="7e1c16ac-bdd8-43ba-ad97-f288a7180abb"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tb_produtos_preco_venda}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="4" forecolor="#666666" uuid="059b1cd8-937b-488d-ad0c-65f1bfb8c289"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="35">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="3c271f7a-cee1-4886-bd29-d5660ffa9a96"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="fbc38e4c-94a9-4dd4-b7cd-bc78783fceb0"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="5ba93be4-4e61-4d8f-98be-5aafd0c458c9"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

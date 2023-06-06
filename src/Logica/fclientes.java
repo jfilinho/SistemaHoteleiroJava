@@ -16,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class fclientes {
     private conexao mysql=new conexao();
@@ -65,6 +65,8 @@ public class fclientes {
     }
     
     }
+    
+    
     
     public boolean inserir (vclientes dts){
         sSQL = "insert into tb_pessoas (nome_pessoa, nome_pai, nome_mae, tipo_documento, num_documento, endereco, telefone, email)" +

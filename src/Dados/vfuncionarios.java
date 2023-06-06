@@ -7,7 +7,7 @@ package Dados;
 
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class vfuncionarios extends vpessoas {
     Double salario;

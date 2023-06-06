@@ -5,9 +5,20 @@
  */
 package Apresentacao;
 
+import Logica.conexao;
+import java.io.File;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class frm_menu extends javax.swing.JFrame {
 
@@ -17,7 +28,7 @@ public class frm_menu extends javax.swing.JFrame {
     public frm_menu() {
         initComponents();
         this.setExtendedState(frm_menu.MAXIMIZED_BOTH);
-        this.setTitle("Sistema de Reservas para Hotéis - Pousada Freitas");
+        this.setTitle("Sistema de Reservas - Hotel Parma Tulipa");
     }
 
     /**
@@ -30,61 +41,185 @@ public class frm_menu extends javax.swing.JFrame {
     private void initComponents() {
 
         menu = new javax.swing.JDesktopPane();
-        LB_id = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         LB_nome = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        LB_id = new javax.swing.JLabel();
         LB_acesso = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
+        jLabel4 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
-        menu_sistema = new javax.swing.JMenu();
         menu_arquivo = new javax.swing.JMenu();
         s_menu_quartos = new javax.swing.JMenuItem();
         s_menu_produtos = new javax.swing.JMenuItem();
         menu_reservas = new javax.swing.JMenu();
         s_menu_reservas = new javax.swing.JMenuItem();
-        s_menu_clientes = new javax.swing.JMenuItem();
-        s_menu_pagamentos = new javax.swing.JMenuItem();
+        menu_cliente = new javax.swing.JMenuItem();
         menu_consultas = new javax.swing.JMenu();
+        menu_status_quarto = new javax.swing.JMenuItem();
         menu_config = new javax.swing.JMenu();
         s_menu_usuarios = new javax.swing.JMenuItem();
-        menu_ferramentas = new javax.swing.JMenu();
         menu_ajuda = new javax.swing.JMenu();
+        rel_quartos = new javax.swing.JMenuItem();
+        rel_produtos = new javax.swing.JMenuItem();
         menu_sair = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAutoRequestFocus(false);
+        setFocusCycleRoot(false);
+        setLocationByPlatform(true);
+        setUndecorated(true);
+        setResizable(false);
 
-        menu.setBackground(new java.awt.Color(255, 255, 255));
+        menu.setDoubleBuffered(true);
+        menu.setFocusCycleRoot(false);
+        menu.setFocusable(false);
+        menu.setRequestFocusEnabled(false);
 
-        LB_id.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        LB_id.setForeground(new java.awt.Color(255, 255, 255));
-        LB_id.setText("jLabel1");
-        menu.add(LB_id);
-        LB_id.setBounds(1210, 10, 31, 13);
+        jPanel1.setBackground(new java.awt.Color(255, 102, 51));
+        jPanel1.setDoubleBuffered(false);
+        jPanel1.setFocusable(false);
+        jPanel1.setPreferredSize(new java.awt.Dimension(1000, 600));
+        jPanel1.setRequestFocusEnabled(false);
+        jPanel1.setVerifyInputWhenFocusTarget(false);
 
-        LB_nome.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        LB_nome.setForeground(new java.awt.Color(255, 255, 255));
-        LB_nome.setText("jLabel1");
-        menu.add(LB_nome);
-        LB_nome.setBounds(1240, 10, 31, 13);
+        jPanel2.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel2.setDoubleBuffered(false);
+        jPanel2.setEnabled(false);
+        jPanel2.setFocusable(false);
+        jPanel2.setRequestFocusEnabled(false);
+        jPanel2.setVerifyInputWhenFocusTarget(false);
 
-        LB_acesso.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        LB_acesso.setForeground(new java.awt.Color(255, 255, 255));
-        LB_acesso.setText("jLabel1");
-        menu.add(LB_acesso);
-        LB_acesso.setBounds(1270, 10, 80, 13);
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel3.setText("G. de Acesso");
+        jLabel3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        menu_sistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/Inicio.png"))); // NOI18N
-        menu_sistema.setMnemonic('f');
-        menu_sistema.setText("Sistema");
-        menu_sistema.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBar.add(menu_sistema);
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel1.setText("Funcionário");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        LB_nome.setBackground(new java.awt.Color(255, 255, 255));
+        LB_nome.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LB_nome.setForeground(new java.awt.Color(51, 204, 0));
+        LB_nome.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LB_nome.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 102, 51));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel2.setText("ID");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        LB_id.setBackground(new java.awt.Color(0, 102, 102));
+        LB_id.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LB_id.setForeground(new java.awt.Color(51, 204, 0));
+        LB_id.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LB_id.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        LB_acesso.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        LB_acesso.setForeground(new java.awt.Color(51, 204, 0));
+        LB_acesso.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        LB_acesso.setToolTipText("");
+        LB_acesso.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/logo_tranparente_pequeno.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(LB_acesso, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                        .addComponent(LB_nome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(LB_id, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(LB_acesso, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LB_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LB_id, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(356, Short.MAX_VALUE))
+        );
+
+        jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+        jSeparator1.setOrientation(javax.swing.SwingConstants.VERTICAL);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/logo_tranparente_1.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 770, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jSeparator1)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        menu.add(jPanel1);
+        jPanel1.setBounds(0, 0, 1380, 728);
+
+        menuBar.setForeground(new java.awt.Color(102, 204, 0));
+        menuBar.setAlignmentX(0.0F);
+
+        menu_arquivo.setForeground(new java.awt.Color(0, 51, 153));
         menu_arquivo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/arquivo.png"))); // NOI18N
         menu_arquivo.setMnemonic('e');
-        menu_arquivo.setText("Arquivo");
+        menu_arquivo.setText("CADASTRO   |");
         menu_arquivo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_arquivo.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        s_menu_quartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/quartos.png"))); // NOI18N
+        s_menu_quartos.setBackground(new java.awt.Color(102, 204, 0));
+        s_menu_quartos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        s_menu_quartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_quarto.png"))); // NOI18N
         s_menu_quartos.setMnemonic('t');
-        s_menu_quartos.setText("Quartos");
+        s_menu_quartos.setText("Cadastrar Quartos");
         s_menu_quartos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_menu_quartosActionPerformed(evt);
@@ -92,9 +227,11 @@ public class frm_menu extends javax.swing.JFrame {
         });
         menu_arquivo.add(s_menu_quartos);
 
-        s_menu_produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/produtos.png"))); // NOI18N
+        s_menu_produtos.setBackground(new java.awt.Color(102, 204, 0));
+        s_menu_produtos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        s_menu_produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_produto.png"))); // NOI18N
         s_menu_produtos.setMnemonic('y');
-        s_menu_produtos.setText("Produtos");
+        s_menu_produtos.setText("Cadastrar Produtos");
         s_menu_produtos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 s_menu_produtosActionPerformed(evt);
@@ -104,41 +241,69 @@ public class frm_menu extends javax.swing.JFrame {
 
         menuBar.add(menu_arquivo);
 
-        menu_reservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/Reservas.png"))); // NOI18N
+        menu_reservas.setForeground(new java.awt.Color(0, 51, 153));
+        menu_reservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_calendario.png"))); // NOI18N
         menu_reservas.setMnemonic('h');
-        menu_reservas.setText("Reservas");
+        menu_reservas.setText("RESERVAS   |");
         menu_reservas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_reservas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
-        s_menu_reservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/reservas-consumos.png"))); // NOI18N
+        s_menu_reservas.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        s_menu_reservas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_pedidos.png"))); // NOI18N
         s_menu_reservas.setMnemonic('c');
         s_menu_reservas.setText("Reservas e Consumos");
-        menu_reservas.add(s_menu_reservas);
-
-        s_menu_clientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/clientes.png"))); // NOI18N
-        s_menu_clientes.setMnemonic('a');
-        s_menu_clientes.setText("Clientes");
-        s_menu_clientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                s_menu_clientesActionPerformed(evt);
+        s_menu_reservas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                s_menu_reservasMouseClicked(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                s_menu_reservasMousePressed(evt);
             }
         });
-        menu_reservas.add(s_menu_clientes);
+        s_menu_reservas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                s_menu_reservasActionPerformed(evt);
+            }
+        });
+        menu_reservas.add(s_menu_reservas);
 
-        s_menu_pagamentos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/pagamentos.png"))); // NOI18N
-        s_menu_pagamentos.setText("Pagamentos");
-        menu_reservas.add(s_menu_pagamentos);
+        menu_cliente.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        menu_cliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_clientes.png"))); // NOI18N
+        menu_cliente.setText("Cadastrar Clientes");
+        menu_cliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_clienteActionPerformed(evt);
+            }
+        });
+        menu_reservas.add(menu_cliente);
 
         menuBar.add(menu_reservas);
 
-        menu_consultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/buscar.png"))); // NOI18N
-        menu_consultas.setText("Consultas");
+        menu_consultas.setForeground(new java.awt.Color(0, 51, 153));
+        menu_consultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_pesquisar.png"))); // NOI18N
+        menu_consultas.setText("CONSULTAS   |");
         menu_consultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_consultas.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        menu_status_quarto.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        menu_status_quarto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_quarto.png"))); // NOI18N
+        menu_status_quarto.setText("Quartos Disponíveis");
+        menu_status_quarto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menu_status_quartoActionPerformed(evt);
+            }
+        });
+        menu_consultas.add(menu_status_quarto);
+
         menuBar.add(menu_consultas);
 
+        menu_config.setForeground(new java.awt.Color(0, 51, 153));
         menu_config.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/configurações.png"))); // NOI18N
-        menu_config.setText("Configurações");
+        menu_config.setText("CONFIGURAÇÕES   |");
         menu_config.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_config.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
 
+        s_menu_usuarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         s_menu_usuarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/usuario 32x32.png"))); // NOI18N
         s_menu_usuarios.setText("Usuários e Acessos");
         s_menu_usuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -150,19 +315,39 @@ public class frm_menu extends javax.swing.JFrame {
 
         menuBar.add(menu_config);
 
-        menu_ferramentas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/ferramentas.png"))); // NOI18N
-        menu_ferramentas.setText("Ferramentas");
-        menu_ferramentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menuBar.add(menu_ferramentas);
-
-        menu_ajuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/ajuda.png"))); // NOI18N
-        menu_ajuda.setText("Ajuda");
+        menu_ajuda.setForeground(new java.awt.Color(0, 51, 153));
+        menu_ajuda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_relatorio.png"))); // NOI18N
+        menu_ajuda.setText("RELATÓRIOS   |");
         menu_ajuda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_ajuda.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
+
+        rel_quartos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        rel_quartos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/relario_quarto.png"))); // NOI18N
+        rel_quartos.setText("Relatório Quartos");
+        rel_quartos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rel_quartosActionPerformed(evt);
+            }
+        });
+        menu_ajuda.add(rel_quartos);
+
+        rel_produtos.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        rel_produtos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/relatorio_produto.png"))); // NOI18N
+        rel_produtos.setText("Relatório Produtos");
+        rel_produtos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rel_produtosActionPerformed(evt);
+            }
+        });
+        menu_ajuda.add(rel_produtos);
+
         menuBar.add(menu_ajuda);
 
-        menu_sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/sair.png"))); // NOI18N
-        menu_sair.setText("Sair");
+        menu_sair.setForeground(new java.awt.Color(0, 51, 153));
+        menu_sair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Files/images/icones/icone_sair.png"))); // NOI18N
+        menu_sair.setText("SAIR");
         menu_sair.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        menu_sair.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         menu_sair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 menu_sairMouseClicked(evt);
@@ -176,18 +361,21 @@ public class frm_menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 1366, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(menu, javax.swing.GroupLayout.PREFERRED_SIZE, 728, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void s_menu_quartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_menu_quartosActionPerformed
@@ -204,13 +392,6 @@ public class frm_menu extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_s_menu_produtosActionPerformed
 
-    private void s_menu_clientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_menu_clientesActionPerformed
-      frm_clientes form = new frm_clientes();
-        menu.add(form);
-        form.toFront();
-        form.setVisible(true);
-    }//GEN-LAST:event_s_menu_clientesActionPerformed
-
     private void s_menu_usuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_menu_usuariosActionPerformed
         frm_funcionario form = new frm_funcionario();
         menu.add(form);
@@ -221,6 +402,75 @@ public class frm_menu extends javax.swing.JFrame {
     private void menu_sairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menu_sairMouseClicked
        this.dispose();
     }//GEN-LAST:event_menu_sairMouseClicked
+
+    private void s_menu_reservasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_s_menu_reservasActionPerformed
+        frm_reservas form = new frm_reservas();
+        menu.add(form);
+        form.toFront();
+        form.setVisible(true);
+        
+        frm_reservas.txt_id_funcionario.setText(LB_id.getText());
+        frm_reservas.txt_nome_funcionario.setText(LB_nome.getText());
+    }//GEN-LAST:event_s_menu_reservasActionPerformed
+
+    private void s_menu_reservasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_s_menu_reservasMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_s_menu_reservasMouseClicked
+
+    private void s_menu_reservasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_s_menu_reservasMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_s_menu_reservasMousePressed
+        private Connection connection=new conexao().conectar();
+
+    private void menu_status_quartoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_status_quartoActionPerformed
+       frm_status_quarto form = new frm_status_quarto();
+       menu.add(form);
+       form.toFront();
+       form.setVisible(true);
+         
+    }//GEN-LAST:event_menu_status_quartoActionPerformed
+
+    private void rel_quartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rel_quartosActionPerformed
+         Map p=new HashMap();
+      JasperReport relatorio;
+      JasperPrint impressao;
+        
+        try {
+            relatorio = JasperCompileManager.compileReport(new File("").getAbsolutePath()+
+            "/src/Relatorios/rel_quartos.jrxml");
+            impressao = JasperFillManager.fillReport(relatorio, p, connection);
+            JasperViewer view = new JasperViewer(impressao, false);
+            view.setTitle("Quartos Cadastrados");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+         
+    }//GEN-LAST:event_rel_quartosActionPerformed
+
+    private void rel_produtosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rel_produtosActionPerformed
+         Map p = new HashMap();
+        JasperReport relatorio;
+        JasperPrint impressao;
+        
+        try {
+            relatorio = JasperCompileManager.compileReport(new File("").getAbsolutePath()+
+            "/src/Relatorios/rel_produtos.jrxml");
+            impressao = JasperFillManager.fillReport(relatorio, p, connection);
+            JasperViewer view = new JasperViewer(impressao, false);
+            view.setTitle("Produtos Cadastrados");
+            view.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_rel_produtosActionPerformed
+
+    private void menu_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menu_clienteActionPerformed
+         frm_clientes form = new frm_clientes();
+        menu.add(form);
+        form.toFront();
+        form.setVisible(true);
+    }//GEN-LAST:event_menu_clienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -261,18 +511,26 @@ public class frm_menu extends javax.swing.JFrame {
     public static javax.swing.JLabel LB_acesso;
     public static javax.swing.JLabel LB_id;
     public static javax.swing.JLabel LB_nome;
-    private javax.swing.JDesktopPane menu;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JSeparator jSeparator1;
+    public static javax.swing.JDesktopPane menu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menu_ajuda;
     public static javax.swing.JMenu menu_arquivo;
+    private javax.swing.JMenuItem menu_cliente;
     public static javax.swing.JMenu menu_config;
     private javax.swing.JMenu menu_consultas;
-    private javax.swing.JMenu menu_ferramentas;
     private javax.swing.JMenu menu_reservas;
     private javax.swing.JMenu menu_sair;
-    private javax.swing.JMenu menu_sistema;
-    private javax.swing.JMenuItem s_menu_clientes;
-    private javax.swing.JMenuItem s_menu_pagamentos;
+    private javax.swing.JMenuItem menu_status_quarto;
+    private javax.swing.JMenuItem rel_produtos;
+    private javax.swing.JMenuItem rel_quartos;
     private javax.swing.JMenuItem s_menu_produtos;
     private javax.swing.JMenuItem s_menu_quartos;
     private javax.swing.JMenuItem s_menu_reservas;

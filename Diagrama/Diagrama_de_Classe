@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Logica">
+  <ClassDiagramComponents>
+    <Class name="conexao" package="Logica" visibility="public" xPosition="314.0" yPosition="10.0">
+      <Fields>
+        <Field name="db" type="String" visibility="public"/>
+        <Field name="url" type="String" visibility="public"/>
+        <Field name="user" type="String" visibility="public"/>
+        <Field name="pass" type="String" visibility="public"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="conectar" returnType="Connection" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="fclientes" package="Logica" visibility="public" xPosition="8.0" yPosition="10.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="sSQL2" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vclientes" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vclientes" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vclientes" name="dts"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="fconsumo" package="Logica" visibility="public" xPosition="914.0" yPosition="25.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+        <Field name="totalconsumo" type="Double" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vconsumo" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vconsumo" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vconsumo" name="dts"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="ffuncionarios" package="Logica" visibility="public" xPosition="539.0" yPosition="11.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="sSQL2" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vfuncionarios" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vfuncionarios" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vfuncionarios" name="dts"/>
+        </Method>
+        <Method name="login" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="login"/>
+          <Argument type="String" name="password"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="fpago" package="Logica" visibility="public" xPosition="914.0" yPosition="293.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+        <Field name="taxa" type="Double" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vpago" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vpago" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vpago" name="dts"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="fprodutos" package="Logica" visibility="public" xPosition="330.0" yPosition="331.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vprodutos" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vprodutos" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vprodutos" name="dts"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="fquartos" package="Logica" visibility="public" xPosition="8.0" yPosition="350.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="mostrarquartos" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vquartos" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vquartos" name="dts"/>
+        </Method>
+        <Method name="desocupar" returnType="boolean" visibility="public">
+          <Argument type="vquartos" name="dts"/>
+        </Method>
+        <Method name="ocupar" returnType="boolean" visibility="public">
+          <Argument type="vquartos" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vquartos" name="dts"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="freserva" package="Logica" visibility="public" xPosition="608.0" yPosition="333.0">
+      <Fields>
+        <Field name="mysql" type="conexao" visibility="private"/>
+        <Field name="cn" type="Connection" visibility="private"/>
+        <Field name="sSQL" type="String" visibility="private"/>
+        <Field name="totalregistros" type="Integer" visibility="public"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="mostrar" returnType="DefaultTableModel" visibility="public">
+          <Argument type="String" name="buscar"/>
+        </Method>
+        <Method name="inserir" returnType="boolean" visibility="public">
+          <Argument type="vreservas" name="dts"/>
+        </Method>
+        <Method name="editar" returnType="boolean" visibility="public">
+          <Argument type="vreservas" name="dts"/>
+        </Method>
+        <Method name="pagar" returnType="boolean" visibility="public">
+          <Argument type="vreservas" name="dts"/>
+        </Method>
+        <Method name="deletar" returnType="boolean" visibility="public">
+          <Argument type="vreservas" name="dts"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="mysql" source="Logica.fpago" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mysql" source="Logica.fquartos" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mysql" source="Logica.fconsumo" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mysql" source="Logica.fclientes" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mysql" source="Logica.ffuncionarios" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mysql" source="Logica.freserva" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="mysql" source="Logica.fprodutos" target="Logica.conexao" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

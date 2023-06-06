@@ -7,7 +7,7 @@ package Dados;
 
 /**
  *
- * @author Hugo
+ * @author filin
  */
 public class vclientes extends vpessoas {
     private String codigo_cliente;
